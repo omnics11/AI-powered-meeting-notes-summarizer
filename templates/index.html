@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  <form action="/generate" method="post" enctype="multipart/form-data">
+    <label>Instruction / Prompt</label>
+    <input type="text" name="instruction" placeholder="e.g., Summarize for execs with action items" required />
+
+    <label>Upload transcript (txt)</label>
+    <input type="file" name="file" accept=".txt" />
+
+    <label>Or paste transcript text</label>
+    <textarea name="transcript_text" placeholder="Paste your raw meeting/call notes here..."></textarea>
+
+    <div class="actions">
+      <button type="submit">Generate Summary</button>
+    </div>
+  </form>
+{% endblock %}

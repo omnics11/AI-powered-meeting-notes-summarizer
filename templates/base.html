@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title or "SocialHub Summarizer" }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 2rem; }
+    .container { max-width: 800px; margin: 0 auto; }
+    textarea { width: 100%; min-height: 220px; }
+    input[type="text"], input[type="email"] { width: 100%; }
+    .error { color: #b00020; margin: 0.5rem 0; }
+    .success { color: #0a7a33; margin: 0.5rem 0; }
+    .actions { margin-top: 1rem; display: flex; gap: .5rem; }
+    button { padding: .6rem 1rem; }
+    label { font-weight: 600; display: block; margin-top: .75rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ title or "SocialHub Summarizer" }}</h1>
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

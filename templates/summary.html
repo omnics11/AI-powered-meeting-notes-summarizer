@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  {% if sent %}<div class="success">✅ Summary emailed successfully.</div>{% endif %}
+
+  <h2>Summary #{{ rec.id }}</h2>
+  <form action="/summary/{{ rec.id }}/update" method="post">
+    <label>Summary (editable)</label>
+    <textarea name="summary">{{ rec.summary }}</textarea>
+
+    <label>Recipients (comma separated emails)</label>
+    <input type="text" name="recipients" value="{{ rec.recipients or '' }}" placeholder="a@x.com, b@y.com" />
+
+    <div class="actions">
+      <button type="submit">Save</button>
+    </div>
+  </form>
+
+  <!-- Updated send form -->
+  <form action="/summary/{{ rec.id }}/send" method="post" style="margin-top: .75rem;">
+    <label>Recipients (comma separated emails)</label>
+    <input type="text" name="recipient" placeholder="a@x.com, b@y.com" required />
+    <button type="submit">Send via Email</button>
+  </form>
+
+  <p style="margin-top:1rem;">
+    <a href="/">← Back</a>
+  </p>
+{% endblock %}
